@@ -33,6 +33,7 @@
             background-color: #f0f4f8;
             color: #333;
             line-height: 1.6;
+            animation: pageLoadFadeIn 0.8s ease-out;
         }
 
         h1, h2, h3, h4, h5 {
@@ -45,6 +46,51 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+                /* Preloader Styles */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader {
+            text-align: center;
+            color: white;
+        }
+
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loader p {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
                 /* Header Styles */
         header {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -54,6 +100,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            animation: headerSlideDown 0.6s ease-out;
         }
 
         .header-container {
@@ -110,22 +157,45 @@
             font-size: 1.5rem;
             cursor: pointer;
         }
-                /* Hero Section */
+
+        /* Hero Section */
         .hero {
             background: linear-gradient(rgba(26, 115, 232, 0.9), rgba(13, 71, 161, 0.9)), url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-4.0.3') no-repeat center center/cover;
             color: white;
             padding: 5rem 0;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(26, 115, 232, 0.3), rgba(13, 71, 161, 0.3));
+            animation: gradientShift 10s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            animation: heroContentZoomIn 0.8s ease-out 0.3s both;
         }
 
         .hero h2 {
             font-size: 2.8rem;
             margin-bottom: 1rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
         }
 
         .hero p {
@@ -134,36 +204,37 @@
             opacity: 0.9;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background: var(--accent);
-            color: white;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 500;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            box-shadow: 0 4px 15px rgba(255, 109, 0, 0.3);
+        @keyframes pageLoadFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .btn:hover {
-            background: #e65100;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 109, 0, 0.4);
+        @keyframes headerSlideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 2px solid white;
-            margin-left: 15px;
-        }
-
-        .btn-outline:hover {
-            background: white;
-            color: var(--primary);
+        @keyframes heroContentZoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
         }
                 /* Features Section */
         .section {
@@ -200,7 +271,15 @@
             text-align: center;
             box-shadow: var(--shadow);
             transition: var(--transition);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: pageLoadFadeIn 0.6s ease-out forwards;
         }
+
+        .feature-card:nth-child(1) { animation-delay: 0.4s; }
+        .feature-card:nth-child(2) { animation-delay: 0.6s; }
+        .feature-card:nth-child(3) { animation-delay: 0.8s; }
+        .feature-card:nth-child(4) { animation-delay: 1.0s; }
 
         .feature-card:hover {
             transform: translateY(-10px);
@@ -289,6 +368,11 @@
             text-align: center;
         }
 
+        .stat-item {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
         .stat-item h3 {
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
@@ -310,6 +394,14 @@
             padding: 2rem;
             box-shadow: var(--shadow);
             position: relative;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .review-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .review-card::before {
@@ -373,6 +465,14 @@
             border-radius: 8px;
             overflow: hidden;
             box-shadow: var(--shadow);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .faq-item.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .faq-question {
@@ -580,14 +680,20 @@
                 margin-left: 0;
             }
         }
-    </style>
-</head>
-<body>
+    </style><body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader">
+            <div class="spinner"></div>
+            <p>Loading FM University Portal...</p>
+        </div>
+    </div>
+
     <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo">
-                <img src="fm-logo.png" alt="FM University Logo">
+                <img src="https://via.placeholder.com/60x60/1a73e8/ffffff?text=FM" alt="FM University Logo">
                 <div class="logo-text">
                     <h1>FM University</h1>
                     <p>Balasore, Odisha</p>
@@ -620,7 +726,7 @@
             </div>
         </div>
     </section>
-        <!-- Features Section -->
+            <!-- Features Section -->
     <section id="features" class="section">
         <div class="container">
             <div class="section-title">
@@ -659,7 +765,7 @@
             </div>
         </div>
     </section>
-        <!-- Grievance Form -->
+            <!-- Grievance Form -->
     <section id="grievance" class="section" style="background-color: #f8f9fa;">
         <div class="container">
             <div class="section-title">
@@ -745,7 +851,7 @@
             </div>
         </div>
     </section>
-        <!-- Stats Section -->
+            <!-- Stats Section -->
     <section class="stats">
         <div class="container stats-container">
             <div class="stat-item">
@@ -801,7 +907,7 @@
                     <div class="review-author">
                         <div class="author-avatar">DR</div>
                         <div class="author-info">
-                            <h4>Debasish Behera</h4>
+                            <h4>Debasish Rout</h4>
                             <p>Mechanical Engineering, 2nd Year</p>
                             <div class="rating">
                                 <i class="fas fa-star"></i>
@@ -820,7 +926,7 @@
                     <div class="review-author">
                         <div class="author-avatar">MP</div>
                         <div class="author-info">
-                            <h4>Rashmi Jena</h4>
+                            <h4>Madhuri Panda</h4>
                             <p>MBA, 1st Year</p>
                             <div class="rating">
                                 <i class="fas fa-star"></i>
@@ -835,7 +941,7 @@
             </div>
         </div>
     </section>
-        <!-- FAQ Section -->
+            <!-- FAQ Section -->
     <section id="faq" class="section">
         <div class="container">
             <div class="section-title">
@@ -913,7 +1019,8 @@
                         <li><a href="#features">Features</a></li>
                         <li><a href="#grievance">Submit Grievance</a></li>
                         <li><a href="#reviews">Student Reviews</a></li>
-                        <li><a href="https://fmuniversity.nic.in/index  " target="_blank">University Website</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                        <li><a href="https://fmuniversity.ac.in" target="_blank">University Website</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -931,7 +1038,7 @@
                     <ul class="contact-info">
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>FM University, Balasore<br>Odisha - 756001, India</span>
+                            <span>FM University, Balasore<br>Odisha - 756019, India</span>
                         </li>
                         <li>
                             <i class="fas fa-phone"></i>
@@ -949,7 +1056,83 @@
             </div>
         </div>
     </footer>
-        <script>
+            <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.classList.add('hidden');
+            }, 500);
+        });
+
+        // Enhanced animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Stats section animation
+            const statItems = document.querySelectorAll('.stat-item');
+            const statsSection = document.querySelector('.stats');
+            
+            const statsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        statItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, index * 150);
+                        });
+                        statsObserver.unobserve(statsSection);
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            if (statsSection) {
+                statsObserver.observe(statsSection);
+            }
+            
+            // Reviews section animation
+            const reviewCards = document.querySelectorAll('.review-card');
+            const reviewsSection = document.querySelector('#reviews');
+            
+            const reviewsObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        reviewCards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('visible');
+                            }, index * 200);
+                        });
+                        reviewsObserver.unobserve(reviewsSection);
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            if (reviewsSection) {
+                reviewsObserver.observe(reviewsSection);
+            }
+            
+            // FAQ section animation
+            const faqItems = document.querySelectorAll('.faq-item');
+            const faqSection = document.querySelector('#faq');
+            
+            const faqObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        faqItems.forEach((item, index) => {
+                            setTimeout(() => {
+                                item.classList.add('visible');
+                            }, index * 100);
+                        });
+                        faqObserver.unobserve(faqSection);
+                    }
+                });
+            }, { threshold: 0.3 });
+            
+            if (faqSection) {
+                faqObserver.observe(faqSection);
+            }
+        });
+
         // Mobile Menu Toggle
         document.querySelector('.mobile-menu').addEventListener('click', function() {
             document.querySelector('nav').classList.toggle('active');
@@ -999,3 +1182,5 @@
     </script>
 </body>
 </html>
+
+</head>
