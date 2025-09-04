@@ -491,6 +491,193 @@
             flex: 1;
         }
 
+        /* Token Tracking Section */
+        .token-section {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+            padding: 4rem 0;
+        }
+
+        .token-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--card-shadow);
+            padding: 3rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .token-form {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .token-input {
+            flex: 1;
+            padding: 14px 18px;
+            border: 2px solid var(--light-gray);
+            border-radius: 10px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+        }
+
+        .token-input:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(26, 115, 232, 0.2);
+        }
+
+        .token-btn {
+            padding: 14px 25px;
+            background: var(--primary);
+            color: white;
+            border-radius: 10px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .token-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        .token-result {
+            background: #f5f9ff;
+            border-radius: 10px;
+            padding: 2rem;
+            display: none;
+        }
+
+        .token-result.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .token-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .token-id {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .token-status {
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .status-pending {
+            background: #fff8e1;
+            color: #ff8f00;
+        }
+
+        .status-in-progress {
+            background: #e3f2fd;
+            color: #1976d2;
+        }
+
+        .status-resolved {
+            background: #e8f5e9;
+            color: #388e3c;
+        }
+
+        .token-details {
+            margin-bottom: 1.5rem;
+        }
+
+        .token-details p {
+            margin-bottom: 0.8rem;
+        }
+
+        .token-details strong {
+            color: var(--dark);
+        }
+
+        .progress-container {
+            margin: 2rem 0;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 30px;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 0;
+            height: 4px;
+            width: 100%;
+            background: var(--light-gray);
+            z-index: 1;
+        }
+
+        .progress-bar {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            height: 4px;
+            width: 33%;
+            background: var(--primary);
+            z-index: 2;
+            transition: width 0.5s ease;
+        }
+
+        .step {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: white;
+            border: 3px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: var(--gray);
+            position: relative;
+            z-index: 3;
+        }
+
+        .step.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        .step-label {
+            position: absolute;
+            top: 45px;
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .step.active .step-label {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
         /* Stats Section */
         .stats {
             background: linear-gradient(135deg, var(--dark), var(--primary-dark));
@@ -797,48 +984,50 @@
             font-size: 0.95rem;
             color: #b0bec5;
         }
-/* Campus Map Styles */
-.campus-map {
-    background: rgba(255, 255, 255, 0.1);
-    padding: 1.2rem;
-    border-radius: 10px;
-    margin-bottom: 1.5rem;
-}
 
-.campus-map h4 {
-    color: var(--secondary);
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-}
+        /* Campus Map Styles */
+        .campus-map {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+        }
 
-.campus-map p {
-    color: #cfd8dc;
-    margin-bottom: 1rem;
-    font-size: 0.95rem;
-}
+        .campus-map h4 {
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
 
-.btn-map {
-    display: inline-block;
-    padding: 8px 15px;
-    background: rgba(255, 255, 255, 0.15);
-    color: white;
-    border-radius: 30px;
-    text-decoration: none;
-    font-weight: 500;
-    transition: var(--transition);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    font-size: 0.9rem;
-}
+        .campus-map p {
+            color: #cfd8dc;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
 
-.btn-map:hover {
-    background: var(--secondary);
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
+        .btn-map {
+            display: inline-block;
+            padding: 8px 15px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            font-size: 0.9rem;
+        }
 
-.btn-map i {
-    margin-right: 8px;
-}
+        .btn-map:hover {
+            background: var(--secondary);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-map i {
+            margin-right: 8px;
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero h2 {
@@ -896,6 +1085,10 @@
                 margin-left: 0;
                 margin-top: 15px;
             }
+            
+            .token-form {
+                flex-direction: column;
+            }
         }
 
         @media (max-width: 576px) {
@@ -939,6 +1132,10 @@
             .form-container {
                 padding: 2rem 1.5rem;
             }
+            
+            .token-container {
+                padding: 2rem 1.5rem;
+            }
         }
     </style>
 </head>
@@ -970,6 +1167,7 @@
                     <li><a href="#" class="active">Home</a></li>
                     <li><a href="#features">Features</a></li>
                     <li><a href="#grievance">Submit Grievance</a></li>
+                    <li><a href="#track">Track Grievance</a></li>
                     <li><a href="#reviews">Reviews</a></li>
                     <li><a href="#faq">FAQ</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -1007,17 +1205,17 @@
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3>Get Token ID</h3>
+                    <p>Receive a unique token ID after submission to track your grievance status anytime.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
                         <i class="fas fa-sync-alt"></i>
                     </div>
                     <h3>Processing</h3>
                     <p>Our system assigns your grievance to the appropriate department for review and action.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3>Communication</h3>
-                    <p>Receive updates and responses through email and SMS. Communicate directly with concerned officials.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">
@@ -1117,6 +1315,54 @@
         </div>
     </section>
 
+    <!-- Token Tracking Section -->
+    <section id="track" class="section token-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Track Your Grievance</h2>
+                <p>Enter your token ID to check the status of your grievance</p>
+            </div>
+            <div class="token-container">
+                <div class="token-form">
+                    <input type="text" id="tokenInput" class="token-input" placeholder="Enter your token ID (e.g. FMU-2023-00123)">
+                    <button id="trackBtn" class="token-btn">Track Grievance</button>
+                </div>
+                <div id="tokenResult" class="token-result">
+                    <div class="token-header">
+                        <div class="token-id">Token ID: <span id="tokenIdDisplay">FMU-2023-00123</span></div>
+                        <div id="tokenStatus" class="token-status status-pending">Pending</div>
+                    </div>
+                    <div class="token-details">
+                        <p><strong>Subject:</strong> <span id="tokenSubject">Issue with hostel facilities</span></p>
+                        <p><strong>Submitted on:</strong> <span id="tokenDate">October 15, 2023</span></p>
+                        <p><strong>Category:</strong> <span id="tokenCategory">Hostel Facilities</span></p>
+                        <p><strong>Expected Resolution:</strong> <span id="tokenExpected">October 25, 2023</span></p>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-steps">
+                            <div class="progress-bar" id="progressBar"></div>
+                            <div class="step active" id="step1">
+                                <span>1</span>
+                                <div class="step-label">Submitted</div>
+                            </div>
+                            <div class="step" id="step2">
+                                <span>2</span>
+                                <div class="step-label">In Progress</div>
+                            </div>
+                            <div class="step" id="step3">
+                                <span>3</span>
+                                <div class="step-label">Resolved</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="token-message">
+                        <p><strong>Latest Update:</strong> Your grievance has been received and is under review. We'll update you within 48 hours.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Stats Section -->
     <section class="stats">
         <div class="container stats-container">
@@ -1174,7 +1420,7 @@
                         <div class="author-avatar">DR</div>
                         <div class="author-info">
                             <h4>Debasish Behera</h4>
-                            <p>Business Management, 3rd Year</p>
+                            <p>Mechanical Engineering, 2nd Year</p>
                             <div class="rating">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -1231,7 +1477,7 @@
                         <i class="fas fa-chevron-down faq-icon"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, you can track your grievance status using the tracking ID provided after submission. Simply visit the "Track Grievance" section and enter your tracking ID.</p>
+                        <p>Yes, you can track your grievance status using the token ID provided after submission. Simply visit the "Track Grievance" section and enter your token ID.</p>
                     </div>
                 </div>
                 <div class="faq-item">
@@ -1265,83 +1511,83 @@
         </div>
     </section>
 
-   <!-- Footer -->
-<!-- Footer -->
-<footer id="contact">
-    <div class="container">
-        <div class="footer-container">
-            <div class="footer-col">
-                <h3>FM University</h3>
-                <p>FM University, Balasore is committed to providing quality education and ensuring a supportive environment for all students.</p>
-                <div class="social-links">
-                    <a href="https://www.facebook.com/FMUniversityBLS/  "><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/FMUniversityBLS  "><i class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/fakirmohanuniversity/  "><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.linkedin.com/school/fakir-mohan-university-balasore/  "><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h3>Quick Links</h3>
-                <ul>
-                    <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
-                    <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
-                    <li><a href="#grievance"><i class="fas fa-chevron-right"></i> Submit Grievance</a></li>
-                    <li><a href="#reviews"><i class="fas fa-chevron-right"></i> Student Reviews</a></li>
-                    <li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
-                    <li><a href="https://fmuniversity.nic.in  " target="_blank"><i class="fas fa-chevron-right"></i> University Website</a></li>
-                </ul>
-            </div>
-            <div class="footer-col">
-                <h3>Important Pages</h3>
-                <ul>
-                    <li><a href="https://fmuniversity.nic.in/placement_cell.html  "><i class="fas fa-chevron-right"></i> Placement Cell</a></li>
-                    <li><a href="https://fmuniversity.nic.in/academic_calendar.html  "><i class="fas fa-chevron-right"></i> Academic Calendar</a></li>
-                    <li><a href="https://fmuems.in/  "><i class="fas fa-chevron-right"></i> Examination Portal</a></li>
-                    <li><a href="https://fmuniversity.nic.in/notice.html"><i class="fas fa-chevron-right"></i> Campus Notice</a></li>
-                    <li><a href="https://fmuniversity.nic.in/contactus  "><i class="fas fa-chevron-right"></i> Our Help desk</a></li>
-                </ul>
-                <!-- Campus Locations Section -->
-                <div style="margin-top: 25px;">
-                    <h3>Campus Locations</h3>
-                    <div class="campus-map">
-                        <h4>New Campus</h4>
-                        <p>FM University, Balasore<br>Odisha - 756089</p>
-                        <a href="https://maps.app.goo.gl/HX3j1ZkhtrKrdR7g6" target="_blank" class="btn-map">
-                            <i class="fas fa-map-marker-alt"></i> Get Directions
-                        </a>
-                    </div>
-                    <div class="campus-map" style="margin-top: 20px;">
-                        <h4>Old Campus</h4>
-                        <p>FM University Old Campus<br>Balasore, Odisha - 756019</p>
-                        <a href="https://maps.app.goo.gl/VU7E5Lp8CWvFVcB48" target="_blank" class="btn-map">
-                            <i class="fas fa-map-marker-alt"></i> Get Directions
-                        </a>
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>FM University</h3>
+                    <p>FM University, Balasore is committed to providing quality education and ensuring a supportive environment for all students.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/FMUniversityBLS/    "><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://x.com/FMUniversityBLS    "><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/fakirmohanuniversity/    "><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/school/fakir-mohan-university-balasore/    "><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
+                        <li><a href="#grievance"><i class="fas fa-chevron-right"></i> Submit Grievance</a></li>
+                        <li><a href="#reviews"><i class="fas fa-chevron-right"></i> Student Reviews</a></li>
+                        <li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                        <li><a href="https://fmuniversity.nic.in    " target="_blank"><i class="fas fa-chevron-right"></i> University Website</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Important Pages</h3>
+                    <ul>
+                        <li><a href="https://fmuniversity.nic.in/placement_cell.html    "><i class="fas fa-chevron-right"></i> Placement Cell</a></li>
+                        <li><a href="https://fmuniversity.nic.in/academic_calendar.html    "><i class="fas fa-chevron-right"></i> Academic Calendar</a></li>
+                        <li><a href="https://fmuems.in/    "><i class="fas fa-chevron-right"></i> Examination Portal</a></li>
+                        <li><a href="https://fmuniversity.nic.in/notice.html  "><i class="fas fa-chevron-right"></i> Campus Notice</a></li>
+                        <li><a href="https://fmuniversity.nic.in/contactus    "><i class="fas fa-chevron-right"></i> Our Help desk</a></li>
+                    </ul>
+                    <!-- Campus Locations Section -->
+                    <div style="margin-top: 25px;">
+                        <h3>Campus Locations</h3>
+                        <div class="campus-map">
+                            <h4>New Campus</h4>
+                            <p>FM University, Balasore<br>Odisha - 756089</p>
+                            <a href="https://maps.app.goo.gl/HX3j1ZkhtrKrdR7g6  " target="_blank" class="btn-map">
+                                <i class="fas fa-map-marker-alt"></i> Get Directions
+                            </a>
+                        </div>
+                        <div class="campus-map" style="margin-top: 20px;">
+                            <h4>Old Campus</h4>
+                            <p>FM University Old Campus<br>Balasore, Odisha - 756019</p>
+                            <a href="https://maps.app.goo.gl/VU7E5Lp8CWvFVcB48  " target="_blank" class="btn-map">
+                                <i class="fas fa-map-marker-alt"></i> Get Directions
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Contact Us</h3>
+                    <ul class="contact-info">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>FM University, Balasore<br>Odisha - 756019, India</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <span>+91 6782 254 321</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <span>grievance@fmuniversity.ac.in</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <div class="footer-col">
-                <h3>Contact Us</h3>
-                <ul class="contact-info">
-                    <li>
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>FM University, Balasore<br>Odisha - 756019, India</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-phone"></i>
-                        <span>+91 6782 254 321</span>
-                    </li>
-                    <li>
-                        <i class="fas fa-envelope"></i>
-                        <span>grievance@fmuniversity.ac.in</span>
-                    </li>
-                </ul>
+            <div class="copyright">
+                <p>&copy; 2023 FM University, Balasore. All Rights Reserved. | Student Grievance Redressal Portal BY KGP</p>
             </div>
         </div>
-        <div class="copyright">
-            <p>&copy; 2023 FM University, Balasore. All Rights Reserved. | Student Grievance Redressal Portal BY KGP</p>
-        </div>
-    </div>
-</footer>
+    </footer>
+
     <script>
         // Preloader
         window.addEventListener('load', function() {
@@ -1397,7 +1643,7 @@
             });
         });
 
-        // Form Submission
+        // Form Submission with Token Generation
         document.getElementById('grievanceForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -1405,13 +1651,92 @@
             const name = document.getElementById('name').value;
             const roll = document.getElementById('roll').value;
             const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
             
-            // In a real application, you would send this data to a server
-            // For this demo, we'll just show a success message
-            alert(`Thank you ${name} (Roll: ${roll})!\n\nYour grievance has been submitted successfully.\nA confirmation email has been sent to ${email}.\n\nWe'll review your concern and get back to you shortly.`);
+            // Generate token ID (in real implementation, this would come from server)
+            const tokenID = 'FMU-' + new Date().getFullYear() + '-' + Math.floor(10000 + Math.random() * 90000);
+            
+            // Show success message with token
+            alert(`Thank you ${name} (Roll: ${roll})!\n\nYour grievance has been submitted successfully.\n\nToken ID: ${tokenID}\n\nA confirmation email has been sent to ${email}.\n\nYou can track your grievance status using this token ID.`);
             
             // Reset form
             this.reset();
+        });
+
+        // Token Tracking Functionality
+        document.getElementById('trackBtn').addEventListener('click', function() {
+            const tokenInput = document.getElementById('tokenInput').value.trim();
+            
+            if (!tokenInput) {
+                alert('Please enter a token ID');
+                return;
+            }
+            
+            // In a real implementation, this would fetch data from a server
+            // For demo purposes, we'll simulate different statuses
+            
+            // Show the result container
+            document.getElementById('tokenResult').classList.add('show');
+            
+            // Update token display
+            document.getElementById('tokenIdDisplay').textContent = tokenInput;
+            
+            // Simulate different statuses based on token ID
+            let status, progress;
+            if (tokenInput.includes('00123')) {
+                status = 'Pending';
+                document.getElementById('tokenStatus').className = 'token-status status-pending';
+                progress = 1;
+            } else if (tokenInput.includes('00456')) {
+                status = 'In Progress';
+                document.getElementById('tokenStatus').className = 'token-status status-in-progress';
+                progress = 2;
+            } else if (tokenInput.includes('00789')) {
+                status = 'Resolved';
+                document.getElementById('tokenStatus').className = 'token-status status-resolved';
+                progress = 3;
+            } else {
+                // Random status for demo
+                const statuses = ['Pending', 'In Progress', 'Resolved'];
+                const statusIndex = Math.floor(Math.random() * statuses.length);
+                status = statuses[statusIndex];
+                
+                if (status === 'Pending') {
+                    document.getElementById('tokenStatus').className = 'token-status status-pending';
+                    progress = 1;
+                } else if (status === 'In Progress') {
+                    document.getElementById('tokenStatus').className = 'token-status status-in-progress';
+                    progress = 2;
+                } else {
+                    document.getElementById('tokenStatus').className = 'token-status status-resolved';
+                    progress = 3;
+                }
+            }
+            
+            // Update progress bar
+            const progressBar = document.getElementById('progressBar');
+            if (progress === 1) {
+                progressBar.style.width = '0%';
+                document.getElementById('step1').classList.add('active');
+                document.getElementById('step2').classList.remove('active');
+                document.getElementById('step3').classList.remove('active');
+            } else if (progress === 2) {
+                progressBar.style.width = '50%';
+                document.getElementById('step1').classList.add('active');
+                document.getElementById('step2').classList.add('active');
+                document.getElementById('step3').classList.remove('active');
+            } else {
+                progressBar.style.width = '100%';
+                document.getElementById('step1').classList.add('active');
+                document.getElementById('step2').classList.add('active');
+                document.getElementById('step3').classList.add('active');
+            }
+            
+            // Update other details (in real implementation, these would come from server)
+            document.getElementById('tokenSubject').textContent = 'Issue with hostel facilities';
+            document.getElementById('tokenDate').textContent = 'October 15, 2023';
+            document.getElementById('tokenCategory').textContent = 'Hostel Facilities';
+            document.getElementById('tokenExpected').textContent = 'October 25, 2023';
         });
 
         // Smooth scrolling for anchor links
@@ -1430,5 +1755,3 @@
     </script>
 </body>
 </html>
-
-
