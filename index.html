@@ -797,7 +797,48 @@
             font-size: 0.95rem;
             color: #b0bec5;
         }
+/* Campus Map Styles */
+.campus-map {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.2rem;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+}
 
+.campus-map h4 {
+    color: var(--secondary);
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+}
+
+.campus-map p {
+    color: #cfd8dc;
+    margin-bottom: 1rem;
+    font-size: 0.95rem;
+}
+
+.btn-map {
+    display: inline-block;
+    padding: 8px 15px;
+    background: rgba(255, 255, 255, 0.15);
+    color: white;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 0.9rem;
+}
+
+.btn-map:hover {
+    background: var(--secondary);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.btn-map i {
+    margin-right: 8px;
+}
         /* Responsive Design */
         @media (max-width: 992px) {
             .hero h2 {
@@ -915,7 +956,7 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <img src="https://via.placeholder.com/60x60/1a73e8/ffffff?text=FM" alt="FM University Logo">
+                <img src="fm-logo.png" alt="FM University Logo">
                 <div class="logo-text">
                     <h1>FM University</h1>
                     <p>Balasore, Odisha</p>
@@ -1224,65 +1265,71 @@
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-col">
-                    <h3>FM University</h3>
-                    <p>FM University, Balasore is committed to providing quality education and ensuring a supportive environment for all students.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
-                        <li><a href="#grievance"><i class="fas fa-chevron-right"></i> Submit Grievance</a></li>
-                        <li><a href="#reviews"><i class="fas fa-chevron-right"></i> Student Reviews</a></li>
-                        <li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
-                        <li><a href="https://fmuniversity.ac.in" target="_blank"><i class="fas fa-chevron-right"></i> University Website</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Important Pages</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Student Handbook</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Academic Calendar</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Examination Portal</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Library Resources</a></li>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Career Services</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Contact Us</h3>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>FM University, Balasore<br>Odisha - 756019, India</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <span>+91 6782 254 321</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>grievance@fmuniversity.ac.in</span>
-                        </li>
-                    </ul>
+   <!-- Footer -->
+<footer id="contact">
+    <div class="container">
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3>FM University</h3>
+                <p>FM University, Balasore is committed to providing quality education and ensuring a supportive environment for all students.</p>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/FMUniversityBLS/  "><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://x.com/FMUniversityBLS  "><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/fakirmohanuniversity/  "><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/school/fakir-mohan-university-balasore/  "><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2023 FM University, Balasore. All Rights Reserved. | Student Grievance Redressal Portal</p>
+            <div class="footer-col">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                    <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
+                    <li><a href="#grievance"><i class="fas fa-chevron-right"></i> Submit Grievance</a></li>
+                    <li><a href="#reviews"><i class="fas fa-chevron-right"></i> Student Reviews</a></li>
+                    <li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
+                    <li><a href="https://fmuniversity.nic.in  " target="_blank"><i class="fas fa-chevron-right"></i> University Website</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h3>Campus Locations</h3>
+                <div class="campus-map">
+                    <h4>New Campus</h4>
+                    <p>FM University, Balasore<br>Odisha - 756019</p>
+                    <a href="https://maps.app.goo.gl/VU7E5Lp8CWvFVcB48" class="btn-map">
+                        <i class="fas fa-map-marker-alt"></i> Get Directions
+                    </a>
+                </div>
+                <div class="campus-map" style="margin-top: 20px;">
+                    <h4>Old Campus</h4>
+                    <p>FM University Old Campus<br>Balasore, Odisha</p>
+                    <a href="https://www.google.com/maps/place/FM+University+Old+Campus/@21.500123,86.923456,15z/data=!4m5!3m4!1s0x0:0x0!8m2!3d21.500123!4d86.923456" target="_blank" class="btn-map">
+                        <i class="fas fa-map-marker-alt"></i> Get Directions
+                    </a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h3>Contact Us</h3>
+                <ul class="contact-info">
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>FM University, Balasore<br>Odisha - 756019, India</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-phone"></i>
+                        <span>+91 6782 254 321</span>
+                    </li>
+                    <li>
+                        <i class="fas fa-envelope"></i>
+                        <span>grievance@fmuniversity.ac.in</span>
+                    </li>
+                </ul>
             </div>
         </div>
-    </footer>
-
+        <div class="copyright">
+            <p>&copy; 2023 FM University, Balasore. All Rights Reserved. | Student Grievance Redressal Portal</p>
+        </div>
+    </div>
+</footer>
     <script>
         // Preloader
         window.addEventListener('load', function() {
@@ -1371,3 +1418,4 @@
     </script>
 </body>
 </html>
+
