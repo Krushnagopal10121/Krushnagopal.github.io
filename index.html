@@ -1229,92 +1229,97 @@
     </section>
 
     <!-- Grievance Form -->
-    <section id="grievance" class="section form-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Submit Your Grievance</h2>
-                <p>Please fill in all required fields to submit your concern</p>
-            </div>
-            <div class="form-container">
-                <form id="grievanceForm">
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="name">Full Name *</label>
-                            <input type="text" id="name" class="form-control" placeholder="Enter your full name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="roll">Roll Number *</label>
-                            <input type="text" id="roll" class="form-control" placeholder="Enter your roll number" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email Address *</label>
-                            <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" class="form-control" placeholder="Enter your phone number" required>
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="department">Department *</label>
-                            <select id="department" class="form-control" required>
-                                <option value="">Select Department</option>
-                                <option value="cse">Computer Science & Engineering</option>
-                                <option value="ece">Electronics & Communication Engineering</option>
-                                <option value="eee">Electrical & Electronics Engineering</option>
-                                <option value="mech">Mechanical Engineering</option>
-                                <option value="civil">Civil Engineering</option>
-                                <option value="mba">MBA</option>
-                                <option value="mca">MCA</option>
-                                <option value="other">Other</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="year">Current Year *</label>
-                            <select id="year" class="form-control" required>
-                                <option value="">Select Year</option>
-                                <option value="1">1st Year</option>
-                                <option value="2">2nd Year</option>
-                                <option value="3">3rd Year</option>
-                                <option value="4">4th Year</option>
-                                <option value="pg">Post Graduate</option>
-                            </select>
-                        </div>
+<!-- Grievance Form -->
+<section id="grievance" class="section form-section">
+    <div class="container">
+        <div class="section-title">
+            <h2>Submit Your Grievance</h2>
+            <p>Please fill in all required fields to submit your concern</p>
+        </div>
+        <div class="form-container">
+            <form action="https://formspree.io/f/xovnybez" method="POST">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="Full Name" class="form-control" placeholder="Enter your full name" required>
                     </div>
                     <div class="form-group">
-                        <label for="category">Grievance Category *</label>
-                        <select id="category" class="form-control" required>
-                            <option value="">Select Category</option>
-                            <option value="academic">Academic Issues</option>
-                            <option value="infrastructure">Infrastructure Problems</option>
-                            <option value="faculty">Faculty Related</option>
-                            <option value="examination">Examination Related</option>
-                            <option value="hostel">Hostel Facilities</option>
-                            <option value="finance">Financial Issues</option>
+                        <label for="roll">Roll Number *</label>
+                        <input type="text" id="roll" name="Roll Number" class="form-control" placeholder="Enter your roll number" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="Email Address" class="form-control" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="Phone Number" class="form-control" placeholder="Enter your phone number" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="department">Department *</label>
+                        <select id="department" name="Department" class="form-control" required>
+                            <option value="">Select Department</option>
+                            <option value="cse">Computer Science & Engineering</option>
+                            <option value="ece">Electronics & Communication Engineering</option>
+                            <option value="eee">Electrical & Electronics Engineering</option>
+                            <option value="mech">Mechanical Engineering</option>
+                            <option value="civil">Civil Engineering</option>
+                            <option value="mba">MBA</option>
+                            <option value="mca">MCA</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="subject">Subject *</label>
-                        <input type="text" id="subject" class="form-control" placeholder="Brief subject of your grievance" required>
+                        <label for="year">Current Year *</label>
+                        <select id="year" name="Current Year" class="form-control" required>
+                            <option value="">Select Year</option>
+                            <option value="1">1st Year</option>
+                            <option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option>
+                            <option value="4">4th Year</option>
+                            <option value="pg">Post Graduate</option>
+                        </select>
                     </div>
-                    <div class="form-group">
-                        <label for="description">Detailed Description *</label>
-                        <textarea id="description" class="form-control" placeholder="Describe your grievance in detail..." required></textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="attachment">Attach Documents (Optional)</label>
-                        <input type="file" id="attachment" class="form-control">
-                    </div>
-                    <button type="submit" class="btn">Submit Grievance</button>
-                </form>
-            </div>
+                </div>
+                <div class="form-group">
+                    <label for="category">Grievance Category *</label>
+                    <select id="category" name="Grievance Category" class="form-control" required>
+                        <option value="">Select Category</option>
+                        <option value="academic">Academic Issues</option>
+                        <option value="infrastructure">Infrastructure Problems</option>
+                        <option value="faculty">Faculty Related</option>
+                        <option value="examination">Examination Related</option>
+                        <option value="hostel">Hostel Facilities</option>
+                        <option value="finance">Financial Issues</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Subject *</label>
+                    <input type="text" id="subject" name="Subject" class="form-control" placeholder="Brief subject of your grievance" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Detailed Description *</label>
+                    <textarea id="description" name="Detailed Description" class="form-control" placeholder="Describe your grievance in detail..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="attachment">Attach Documents (Optional)</label>
+                    <input type="file" id="attachment" name="attachment" class="form-control">
+                </div>
+                
+                <!-- Hidden fields for Formspree -->
+                <input type="hidden" name="_subject" value="New Grievance Submission - FM University">
+                <input type="hidden" name="_replyto" value="grievance@fmuniversity.ac.in">
+                
+                <button type="submit" class="btn">Submit Grievance</button>
+            </form>
         </div>
-    </section>
-
+    </div>
+</section>
     <!-- Token Tracking Section -->
     <section id="track" class="section token-section">
         <div class="container">
@@ -1755,3 +1760,4 @@
     </script>
 </body>
 </html>
+
