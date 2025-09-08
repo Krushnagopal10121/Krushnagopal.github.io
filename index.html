@@ -47,102 +47,83 @@
             margin: 0 auto;
         }
 
-        /* Enhanced Preloader Styles */
+       /* Define CSS variables for FM University branding */
+:root {
+  --primary: #003087; /* FM University blue */
+  --primary-dark: #001f5b; /* Darker shade for gradient */
+}
+
+/* Preloader Styles */
 #preloader {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    transition: opacity 0.6s ease, visibility 0.6s ease;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
 #preloader.hidden {
-    opacity: 0;
-    visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
 }
 
-.preloader-content {
-    text-align: center;
-    color: white;
+.loader-content {
+  text-align: center;
+  color: white;
 }
 
-.logo-container {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    margin: 0 auto 20px;
-}
-
-.university-logo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    animation: float 3s ease-in-out infinite;
-    position: relative;
-    z-index: 2;
-}
-
-.spinner-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-}
-
-.spinner-circle {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 4px solid transparent;
-    border-top-color: rgba(255, 255, 255, 0.3);
-    border-radius: 50%;
-    animation: spin 1.5s linear infinite;
-}
-
-.spinner-circle-delay {
-    animation: spin 1.5s linear infinite;
-    animation-delay: 0.2s;
-}
-
-.spinner-circle-delay2 {
-    animation: spin 1.5s linear infinite;
-    animation-delay: 0.4s;
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 20px;
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+  to { transform: rotate(360deg); }
 }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
+.loader-content h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  animation: pulse 2s infinite;
 }
 
-.preloader-content h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+@keyframes pulse {
+  0% { opacity: 0.7; }
+  50% { opacity: 1; }
+  100% { opacity: 0.7; }
 }
 
-.preloader-content p {
-    font-size: 1.1rem;
-    opacity: 0.9;
-    font-weight: 400;
-    letter-spacing: 0.5px;
+/* Basic page styles */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  opacity: 0;
+  transition: opacity 0.5s ease;
 }
 
+body.loaded {
+  opacity: 1;
+}
+
+.content {
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  color: var(--primary);
+}
         /* Header */
         header {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
@@ -1185,22 +1166,45 @@
     </style>
 </head>
 <body>
-    <!-- Preloader -->
-    <!-- Preloader -->
-<div id="preloader">
-    <div class="preloader-content">
-        <div class="logo-container">
-            <img src="fm-logo.png" class="university-logo">
-            <div class="spinner-container">
-                <div class="spinner-circle"></div>
-                <div class="spinner-circle spinner-circle-delay"></div>
-                <div class="spinner-circle spinner-circle-delay2"></div>
-            </div>
-        </div>
-        <h2>FM University</h2>
-        <p>Student Grievance Redressal Portal</p>
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FM University Grievance Redressal Portal</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Preloader -->
+  <div class="preloader" id="preloader">
+    <div class="loader-content">
+      <div class="spinner"></div>
+<img src="fm-logo.png" alt="FM University Logo" class="university-logo">
     </div>
-</div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="content">
+    <h1>Welcome to FM University Grievance Redressal Portal</h1>
+    <p>Your voice matters. Submit your concerns and get timely resolution from FM University authorities.</p>
+    <!-- Additional content from your document can be added here -->
+  </div>
+
+  <script>
+    // Hide preloader and show content when page is fully loaded
+    window.addEventListener('load', () => {
+      const preloader = document.getElementById('preloader');
+      const body = document.body;
+
+      // Delay to ensure smooth transition
+      setTimeout(() => {
+        preloader.classList.add('hidden');
+        body.classList.add('loaded');
+      }, 500); // 500ms delay for visual effect
+    });
+  </script>
+</body>
+</html>
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -1812,6 +1816,7 @@
     </script>
 </body>
 </html>
+
 
 
 
