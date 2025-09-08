@@ -72,6 +72,12 @@
             color: white;
         }
 
+        .loader-logo {
+            height: 80px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
         .spinner {
             width: 60px;
             height: 60px;
@@ -86,16 +92,20 @@
             to { transform: rotate(360deg); }
         }
 
-        .loader-content h2 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            animation: pulse 2s infinite;
+        .progress-bar {
+            width: 200px;
+            height: 4px;
+            background: rgba(255,255,255,0.3);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 20px auto 0;
         }
 
-        @keyframes pulse {
-            0% { opacity: 0.7; }
-            50% { opacity: 1; }
-            100% { opacity: 0.7; }
+        .progress-fill {
+            width: 0%;
+            height: 100%;
+            background: white;
+            transition: width 0.3s ease;
         }
 
         /* Header */
@@ -238,6 +248,20 @@
             font-size: 3rem;
             margin-bottom: 1.5rem;
             text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            border-right: 0.15em solid white;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 3s steps(30, end) 1s normal both, blink-caret 0.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: white; }
         }
 
         .hero p {
@@ -1143,9 +1167,11 @@
     <!-- Preloader -->
     <div id="preloader">
         <div class="loader-content">
+            <img src="https://upload.wikimedia.org/wikipedia/en/c/c8/Fakir_Mohan_University_Logo.png" alt="FM University Logo" class="loader-logo">
             <div class="spinner"></div>
-            <h2>FM University Portal</h2>
-            <p>Loading student grievance system...</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
         </div>
     </div>
 
@@ -1153,7 +1179,7 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <img src="fm-logo.png" alt="FM University Logo">
+                <img src="https://upload.wikimedia.org/wikipedia/en/c/c8/Fakir_Mohan_University_Logo.png" alt="FM University Logo">
                 <div class="logo-text">
                     <h1>FM University</h1>
                     <p>Balasore, Odisha</p>
@@ -1229,97 +1255,106 @@
     </section>
 
     <!-- Grievance Form -->
-<!-- Grievance Form -->
-<section id="grievance" class="section form-section">
-    <div class="container">
-        <div class="section-title">
-            <h2>Submit Your Grievance</h2>
-            <p>Please fill in all required fields to submit your concern</p>
-        </div>
-        <div class="form-container">
-            <form action="https://formspree.io/f/xovnybez" method="POST">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="name">Full Name *</label>
-                        <input type="text" id="name" name="Full Name" class="form-control" placeholder="Enter your full name" required>
+    <section id="grievance" class="section form-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Submit Your Grievance</h2>
+                <p>Please fill in all required fields to submit your concern</p>
+            </div>
+            <div class="form-container">
+                <form id="grievanceForm" action="https://formspree.io/f/xovnybez" method="POST">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="Full Name" class="form-control" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="roll">Roll Number *</label>
+                            <input type="text" id="roll" name="Roll Number" class="form-control" placeholder="Enter your roll number" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="Email Address" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+                            <input type="tel" id="phone" name="Phone Number" class="form-control" placeholder="Enter your phone number" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="department">Department *</label>
+                            <select id="department" name="Department" class="form-control" required>
+                                <option value="">Select Department</option>
+                                <option value="cse">Computer Science & Engineering</option>
+                                <option value="ece">Electronics & Communication Engineering</option>
+                                <option value="eee">Electrical & Electronics Engineering</option>
+                                <option value="mech">Mechanical Engineering</option>
+                                <option value="civil">Civil Engineering</option>
+                                <option value="mba">MBA</option>
+                                <option value="mca">MCA</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="year">Current Year *</label>
+                            <select id="year" name="Current Year" class="form-control" required>
+                                <option value="">Select Year</option>
+                                <option value="1">1st Year</option>
+                                <option value="2">2nd Year</option>
+                                <option value="3">3rd Year</option>
+                                <option value="4">4th Year</option>
+                                <option value="pg">Post Graduate</option>
+                            </select>
+                        </div>
                     </div>
                     <div class="form-group">
-                        <label for="roll">Roll Number *</label>
-                        <input type="text" id="roll" name="Roll Number" class="form-control" placeholder="Enter your roll number" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="email">Email Address *</label>
-                        <input type="email" id="email" name="Email Address" class="form-control" placeholder="Enter your email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Phone Number *</label>
-                        <input type="tel" id="phone" name="Phone Number" class="form-control" placeholder="Enter your phone number" required>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="department">Department *</label>
-                        <select id="department" name="Department" class="form-control" required>
-                            <option value="">Select Department</option>
-                            <option value="cse">Computer Science & Engineering</option>
-                            <option value="ece">Electronics & Communication Engineering</option>
-                            <option value="eee">Electrical & Electronics Engineering</option>
-                            <option value="mech">Mechanical Engineering</option>
-                            <option value="civil">Civil Engineering</option>
-                            <option value="mba">MBA</option>
-                            <option value="mca">MCA</option>
+                        <label for="category">Grievance Category *</label>
+                        <select id="category" name="Grievance Category" class="form-control" required>
+                            <option value="">Select Category</option>
+                            <option value="academic">Academic Issues</option>
+                            <option value="infrastructure">Infrastructure Problems</option>
+                            <option value="faculty">Faculty Related</option>
+                            <option value="examination">Examination Related</option>
+                            <option value="hostel">Hostel Facilities</option>
+                            <option value="finance">Financial Issues</option>
                             <option value="other">Other</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="year">Current Year *</label>
-                        <select id="year" name="Current Year" class="form-control" required>
-                            <option value="">Select Year</option>
-                            <option value="1">1st Year</option>
-                            <option value="2">2nd Year</option>
-                            <option value="3">3rd Year</option>
-                            <option value="4">4th Year</option>
-                            <option value="pg">Post Graduate</option>
-                        </select>
+                        <label for="subject">Subject *</label>
+                        <input type="text" id="subject" name="Subject" class="form-control" placeholder="Brief subject of your grievance" required>
                     </div>
+                    <div class="form-group">
+                        <label for="description">Detailed Description *</label>
+                        <textarea id="description" name="Detailed Description" class="form-control" placeholder="Describe your grievance in detail..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="attachment">Attach Documents (Optional)</label>
+                        <input type="file" id="attachment" name="attachment" class="form-control">
+                    </div>
+                    
+                    <!-- Hidden fields for Formspree -->
+                    <input type="hidden" name="_subject" value="New Grievance Submission - FM University">
+                    <input type="hidden" name="_replyto" value="grievance@fmuniversity.ac.in">
+                    
+                    <button type="submit" class="btn">Submit Grievance</button>
+                </form>
+                <div id="successModal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.2); z-index: 1000; text-align: center;">
+                    <h3>Submission Successful!</h3>
+                    <p>Thank you <span id="successName"></span> (Roll: <span id="successRoll"></span>)!</p>
+                    <p>Your grievance has been submitted successfully.</p>
+                    <p>Token ID: <span id="successToken"></span></p>
+                    <p>A confirmation email has been sent to <span id="successEmail"></span>.</p>
+                    <p>You can track your grievance status using this token ID.</p>
+                    <button id="closeModal" class="btn">Close</button>
                 </div>
-                <div class="form-group">
-                    <label for="category">Grievance Category *</label>
-                    <select id="category" name="Grievance Category" class="form-control" required>
-                        <option value="">Select Category</option>
-                        <option value="academic">Academic Issues</option>
-                        <option value="infrastructure">Infrastructure Problems</option>
-                        <option value="faculty">Faculty Related</option>
-                        <option value="examination">Examination Related</option>
-                        <option value="hostel">Hostel Facilities</option>
-                        <option value="finance">Financial Issues</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="subject">Subject *</label>
-                    <input type="text" id="subject" name="Subject" class="form-control" placeholder="Brief subject of your grievance" required>
-                </div>
-                <div class="form-group">
-                    <label for="description">Detailed Description *</label>
-                    <textarea id="description" name="Detailed Description" class="form-control" placeholder="Describe your grievance in detail..." required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="attachment">Attach Documents (Optional)</label>
-                    <input type="file" id="attachment" name="attachment" class="form-control">
-                </div>
-                
-                <!-- Hidden fields for Formspree -->
-                <input type="hidden" name="_subject" value="New Grievance Submission - FM University">
-                <input type="hidden" name="_replyto" value="grievance@fmuniversity.ac.in">
-                
-                <button type="submit" class="btn">Submit Grievance</button>
-            </form>
+                <div id="modalOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 999;"></div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
     <!-- Token Tracking Section -->
     <section id="track" class="section token-section">
         <div class="container">
@@ -1372,19 +1407,19 @@
     <section class="stats">
         <div class="container stats-container">
             <div class="stat-item">
-                <h3>2,500+</h3>
+                <h3 data-target="2500">0+</h3>
                 <p>Grievances Resolved</p>
             </div>
             <div class="stat-item">
-                <h3>95%</h3>
+                <h3 data-target="95">0%</h3>
                 <p>Satisfaction Rate</p>
             </div>
             <div class="stat-item">
-                <h3>48 hrs</h3>
+                <h3 data-target="48">0 hrs</h3>
                 <p>Avg. Response Time</p>
             </div>
             <div class="stat-item">
-                <h3>100%</h3>
+                <h3 data-target="100">0%</h3>
                 <p>Transparency</p>
             </div>
         </div>
@@ -1397,368 +1432,4 @@
                 <h2>Student Feedback</h2>
                 <p>Hear what students say about our grievance redressal system</p>
             </div>
-            <div class="reviews-container">
-                <div class="review-card">
-                    <div class="review-content">
-                        <p>The grievance portal is incredibly efficient. I submitted a hostel issue and got a response within 24 hours. The problem was resolved in just 3 days!</p>
-                    </div>
-                    <div class="review-author">
-                        <div class="author-avatar">SP</div>
-                        <div class="author-info">
-                            <h4>Tusharkanta Mohanty</h4>
-                            <p>Computer Science, 3rd Year</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="review-card">
-                    <div class="review-content">
-                        <p>I was skeptical at first, but the system really works. My academic grievance was addressed professionally and I received a detailed explanation of the resolution.</p>
-                    </div>
-                    <div class="review-author">
-                        <div class="author-avatar">DR</div>
-                        <div class="author-info">
-                            <h4>Debasish Behera</h4>
-                            <p>Mechanical Engineering, 2nd Year</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="review-card">
-                    <div class="review-content">
-                        <p>This portal has made a huge difference. No more running between departments! I submitted my financial aid query and got a resolution within a week.</p>
-                    </div>
-                    <div class="review-author">
-                        <div class="author-avatar">MP</div>
-                        <div class="author-info">
-                            <h4>Madhuri Panda</h4>
-                            <p>MBA, 1st Year</p>
-                            <div class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Frequently Asked Questions</h2>
-                <p>Find answers to common questions about the grievance redressal process</p>
-            </div>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">
-                        How long does it take to resolve a grievance?
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Most grievances are resolved within 3-5 working days. Complex issues may take up to 10 working days. You'll receive regular updates on the status of your grievance.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Can I track the status of my submitted grievance?
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, you can track your grievance status using the token ID provided after submission. Simply visit the "Track Grievance" section and enter your token ID.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        What if I'm not satisfied with the resolution?
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>If you're not satisfied with the resolution, you can request escalation to higher authorities through the portal. Your grievance will then be reviewed by the Grievance Redressal Committee.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Is my information kept confidential?
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Yes, all grievances are treated with strict confidentiality. Your personal information is protected as per university policies and data privacy regulations.</p>
-                    </div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        Can I submit anonymous grievances?
-                        <i class="fas fa-chevron-down faq-icon"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>While we encourage providing contact information for better communication, you can choose to submit anonymous grievances for sensitive matters. However, this may limit our ability to follow up.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-col">
-                    <h3>FM University</h3>
-                    <p>FM University, Balasore is committed to providing quality education and ensuring a supportive environment for all students.</p>
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/FMUniversityBLS/    "><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://x.com/FMUniversityBLS    "><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/fakirmohanuniversity/    "><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/school/fakir-mohan-university-balasore/    "><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
-                        <li><a href="#features"><i class="fas fa-chevron-right"></i> Features</a></li>
-                        <li><a href="#grievance"><i class="fas fa-chevron-right"></i> Submit Grievance</a></li>
-                        <li><a href="#reviews"><i class="fas fa-chevron-right"></i> Student Reviews</a></li>
-                        <li><a href="#faq"><i class="fas fa-chevron-right"></i> FAQ</a></li>
-                        <li><a href="https://fmuniversity.nic.in    " target="_blank"><i class="fas fa-chevron-right"></i> University Website</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Important Pages</h3>
-                    <ul>
-                        <li><a href="https://fmuniversity.nic.in/placement_cell.html    "><i class="fas fa-chevron-right"></i> Placement Cell</a></li>
-                        <li><a href="https://fmuniversity.nic.in/academic_calendar.html    "><i class="fas fa-chevron-right"></i> Academic Calendar</a></li>
-                        <li><a href="https://fmuems.in/    "><i class="fas fa-chevron-right"></i> Examination Portal</a></li>
-                        <li><a href="https://fmuniversity.nic.in/notice.html  "><i class="fas fa-chevron-right"></i> Campus Notice</a></li>
-                        <li><a href="https://fmuniversity.nic.in/contactus    "><i class="fas fa-chevron-right"></i> Our Help desk</a></li>
-                    </ul>
-                    <!-- Campus Locations Section -->
-                    <div style="margin-top: 25px;">
-                        <h3>Campus Locations</h3>
-                        <div class="campus-map">
-                            <h4>New Campus</h4>
-                            <p>FM University, Balasore<br>Odisha - 756089</p>
-                            <a href="https://maps.app.goo.gl/HX3j1ZkhtrKrdR7g6  " target="_blank" class="btn-map">
-                                <i class="fas fa-map-marker-alt"></i> Get Directions
-                            </a>
-                        </div>
-                        <div class="campus-map" style="margin-top: 20px;">
-                            <h4>Old Campus</h4>
-                            <p>FM University Old Campus<br>Balasore, Odisha - 756019</p>
-                            <a href="https://maps.app.goo.gl/VU7E5Lp8CWvFVcB48  " target="_blank" class="btn-map">
-                                <i class="fas fa-map-marker-alt"></i> Get Directions
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3>Contact Us</h3>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>FM University, Balasore<br>Odisha - 756019, India</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <span>+91 6782 254 321</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>grievance@fmuniversity.ac.in</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 FM University, Balasore. All Rights Reserved. | Student Grievance Redressal Portal BY KGP</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Preloader
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            setTimeout(() => {
-                preloader.classList.add('hidden');
-            }, 1000);
-        });
-
-        // Mobile Menu Toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            document.querySelector('nav').classList.toggle('active');
-        });
-
-        // Scroll animations
-        document.addEventListener('DOMContentLoaded', function() {
-            // Feature cards animation
-            const featureCards = document.querySelectorAll('.feature-card');
-            const statsItems = document.querySelectorAll('.stat-item');
-            const reviewCards = document.querySelectorAll('.review-card');
-            const faqItems = document.querySelectorAll('.faq-item');
-            
-            const observerOptions = {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1
-            };
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, observerOptions);
-            
-            // Observe elements
-            featureCards.forEach(card => observer.observe(card));
-            statsItems.forEach(item => observer.observe(item));
-            reviewCards.forEach(card => observer.observe(card));
-            faqItems.forEach(item => observer.observe(item));
-        });
-
-        // FAQ Accordion
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            const question = item.querySelector('.faq-question');
-            question.addEventListener('click', () => {
-                item.classList.toggle('active');
-                const answer = item.querySelector('.faq-answer');
-                answer.classList.toggle('show');
-            });
-        });
-
-        // Form Submission with Token Generation
-        document.getElementById('grievanceForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form values
-            const name = document.getElementById('name').value;
-            const roll = document.getElementById('roll').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            
-            // Generate token ID (in real implementation, this would come from server)
-            const tokenID = 'FMU-' + new Date().getFullYear() + '-' + Math.floor(10000 + Math.random() * 90000);
-            
-            // Show success message with token
-            alert(`Thank you ${name} (Roll: ${roll})!\n\nYour grievance has been submitted successfully.\n\nToken ID: ${tokenID}\n\nA confirmation email has been sent to ${email}.\n\nYou can track your grievance status using this token ID.`);
-            
-            // Reset form
-            this.reset();
-        });
-
-        // Token Tracking Functionality
-        document.getElementById('trackBtn').addEventListener('click', function() {
-            const tokenInput = document.getElementById('tokenInput').value.trim();
-            
-            if (!tokenInput) {
-                alert('Please enter a token ID');
-                return;
-            }
-            
-            // In a real implementation, this would fetch data from a server
-            // For demo purposes, we'll simulate different statuses
-            
-            // Show the result container
-            document.getElementById('tokenResult').classList.add('show');
-            
-            // Update token display
-            document.getElementById('tokenIdDisplay').textContent = tokenInput;
-            
-            // Simulate different statuses based on token ID
-            let status, progress;
-            if (tokenInput.includes('00123')) {
-                status = 'Pending';
-                document.getElementById('tokenStatus').className = 'token-status status-pending';
-                progress = 1;
-            } else if (tokenInput.includes('00456')) {
-                status = 'In Progress';
-                document.getElementById('tokenStatus').className = 'token-status status-in-progress';
-                progress = 2;
-            } else if (tokenInput.includes('00789')) {
-                status = 'Resolved';
-                document.getElementById('tokenStatus').className = 'token-status status-resolved';
-                progress = 3;
-            } else {
-                // Random status for demo
-                const statuses = ['Pending', 'In Progress', 'Resolved'];
-                const statusIndex = Math.floor(Math.random() * statuses.length);
-                status = statuses[statusIndex];
-                
-                if (status === 'Pending') {
-                    document.getElementById('tokenStatus').className = 'token-status status-pending';
-                    progress = 1;
-                } else if (status === 'In Progress') {
-                    document.getElementById('tokenStatus').className = 'token-status status-in-progress';
-                    progress = 2;
-                } else {
-                    document.getElementById('tokenStatus').className = 'token-status status-resolved';
-                    progress = 3;
-                }
-            }
-            
-            // Update progress bar
-            const progressBar = document.getElementById('progressBar');
-            if (progress === 1) {
-                progressBar.style.width = '0%';
-                document.getElementById('step1').classList.add('active');
-                document.getElementById('step2').classList.remove('active');
-                document.getElementById('step3').classList.remove('active');
-            } else if (progress === 2) {
-                progressBar.style.width = '50%';
-                document.getElementById('step1').classList.add('active');
-                document.getElementById('step2').classList.add('active');
-                document.getElementById('step3').classList.remove('active');
-            } else {
-                progressBar.style.width = '100%';
-                document.getElementById('step1').classList.add('active');
-                document.getElementById('step2').classList.add('active');
-                document.getElementById('step3').classList.add('active');
-            }
-            
-            // Update other details (in real implementation, these would come from server)
-            document.getElementById('tokenSubject').textContent = 'Issue with hostel facilities';
-            document.getElementById('tokenDate').textContent = 'October 15, 2023';
-            document.getElementById('tokenCategory').textContent = 'Hostel Facilities';
-            document.getElementById('tokenExpected').textContent = 'October 25, 2023';
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
-
-
+            <div>
