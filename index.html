@@ -47,143 +47,57 @@
             margin: 0 auto;
         }
 
-       /* Define CSS variables for FM University branding */
-:root {
-  --primary: #003087; /* FM University blue */
-  --primary-dark: #001f5b; /* Darker shade for gradient */
-}
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
 
-/* Preloader Styles */
-/* Define CSS variables for FM University branding */
-:root {
-  --primary: #003087; /* Dark blue background */
-  --primary-light: #0055A4; /* Blue for text and logo */
-  --primary-dark: #001f5b; /* Darker shade for gradient */
-}
+        #preloader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
 
-/* Preloader Styles */
-#preloader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
-}
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
 
-#preloader.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
 
-.loader-content {
-  text-align: center;
-  color: white;
-}
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
 
-.spinner {
-  width: 60px;
-  height: 60px;
-  border: 5px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50%;
-  border-top-color: white;
-  animation: spin 1s linear infinite;
-  margin: 0 auto 20px;
-}
+        .loader-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            animation: pulse 2s infinite;
+        }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
+        @keyframes pulse {
+            0% { opacity: 0.7; }
+            50% { opacity: 1; }
+            100% { opacity: 0.7; }
+        }
 
-.loader-content h2 {
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-  animation: pulse 2s infinite;
-}
-
-@keyframes pulse {
-  0% { opacity: 0.7; }
-  50% { opacity: 1; }
-  100% { opacity: 0.7; }
-}
-
-/* Header Styles */
-header {
-  background-color: var(--primary);
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 2px solid #0055A4;
-}
-
-.logo img {
-  width: 50px;
-  height: auto;
-  vertical-align: middle;
-}
-
-.university-info h1 {
-  color: var(--primary-light); /* Blue for FM University name */
-  font-size: 1.5rem;
-  margin: 0 10px;
-  display: inline;
-}
-
-.university-info p {
-  color: var(--primary-light); /* Blue for Balasore, Odisha */
-  font-size: 0.9rem;
-  margin: 0 10px;
-  display: inline;
-}
-
-nav ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-}
-
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
-  color: white;
-  text-decoration: none;
-  font-size: 1rem;
-}
-
-nav ul li a:hover {
-  color: var(--primary-light);
-}
-
-/* Basic page styles */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-
-body.loaded {
-  opacity: 1;
-}
-
-.content {
-  padding: 20px;
-  text-align: center;
-}
-
-h1 {
-  color: var(--primary-light);
-}
         /* Header */
         header {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
@@ -1226,66 +1140,15 @@ h1 {
     </style>
 </head>
 <body>
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FM University Grievance Redressal Portal</title>
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-  <!-- Preloader -->
-  <div class="preloader" id="preloader">
-    <div class="loader-content">
-      <div class="spinner"></div>
-      <h2>FM University</h2>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <h2>FM University Portal</h2>
+            <p>Loading student grievance system...</p>
+        </div>
     </div>
-  </div>
 
-  <!-- Header -->
-  <header>
-    <div class="logo">
-      <img src="fmu-logo.png" alt="FM University Logo"> <!-- Replace with actual logo path -->
-    </div>
-    <div class="university-info">
-      <h1>FM University</h1>
-      <p>Balasore, Odisha</p>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#features">Features</a></li>
-        <li><a href="#submit-grievance">Submit Grievance</a></li>
-        <li><a href="#track-grievance">Track Grievance</a></li>
-        <li><a href="#reviews">Reviews</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Main Content -->
-  <div class="content">
-    <h1>Welcome to FM University Grievance Redressal Portal</h1>
-    <!-- Additional content from your document can be added here -->
-  </div>
-
-  <script>
-    // Hide preloader and show content when page is fully loaded
-    window.addEventListener('load', () => {
-      const preloader = document.getElementById('preloader');
-      const body = document.body;
-
-      // Delay to ensure smooth transition
-      setTimeout(() => {
-        preloader.classList.add('hidden');
-        body.classList.add('loaded');
-      }, 500); // 500ms delay for visual effect
-    });
-  </script>
-</body>
-</html>
     <!-- Header -->
     <header>
         <div class="container header-container">
@@ -1897,8 +1760,5 @@ h1 {
     </script>
 </body>
 </html>
-
-
-
 
 
